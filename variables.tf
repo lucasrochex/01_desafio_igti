@@ -1,5 +1,5 @@
 variable "base_bucket_name" {
-  default     = "base_bucket_name"
+  default     = "base-bucket-name"
 }
 
 variable "ambiente" {

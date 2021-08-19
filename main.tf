@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "datalake"{
     # Parâmetros de configuração dos recursos
-    bucket = "${var.base-bucket-name}-${var.ambiente}-${var.numero_conta}"
+    bucket = "${var.base_bucket_name}-${var.ambiente}-${var.numero_conta}"
     acl = "private"
     server_side_encryption_configuration {
     rule {
