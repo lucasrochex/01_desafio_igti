@@ -24,7 +24,7 @@ resource "aws_s3_bucket_object" "código_spark"{
 }
 
 provider "aws"{
-    region = "us_east_2"
+    region = "us-east-2"
 }
 
 
