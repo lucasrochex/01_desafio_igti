@@ -18,7 +18,6 @@ enem = (
     .load("s3://datalake-ney-igti-edc/raw-data/enem/")
 )
 
-
 (
     enem
     .write
