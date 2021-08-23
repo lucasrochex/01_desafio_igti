@@ -47,9 +47,8 @@ resource "aws_emr_cluster" "cluster" {
   core_instance_group {
     instance_count = 2
     instance_type  = "m5.xlarge"
+    bid_price = "0.04"
   }
-
-  bid_price = "0.04"
 
   tags = {
     role     = "rolename"
