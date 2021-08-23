@@ -59,7 +59,6 @@ EOF
   core_instance_group {
     instance_type  = "m5.xlarge"
     instance_count = 2
-    bid_price = "0.04"
 
     ebs_config {
       size                 = "40"
@@ -67,7 +66,7 @@ EOF
       volumes_per_instance = 1
     }
 
-    bid_price = "0.30"
+    bid_price = "0.04"
 
     autoscaling_policy = <<EOF
 {
@@ -110,7 +109,7 @@ EOF
     IES   = "IGTI",
     CURSO = "EDC"
   }
-  
+
   bootstrap_action {
     path = "s3://elasticmapreduce/bootstrap-actions/run-if"
     name = "runif"
