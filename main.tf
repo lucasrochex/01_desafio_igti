@@ -145,6 +145,52 @@ EOF
   ]
 EOF
 
+resource "aws_subnet" "main" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "168.31.0.0/20"
+
+  tags = {
+    name = "emr_test"
+  }
+}
+
+resource "aws_security_group" "allow_access" {
+  name        = "allow_access"
+  description = "Allow inbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = aws_vpc.main.cidr_block
+  }
+
+resource "aws_iam_instance_profile" "emr_profile" {
+  name = "emr_profile"
+  role = aws_iam_role.iam_emr_profile_role.name
+}
+
+resource "aws_iam_role" "iam_emr_profile_role" {
+  name = "iam_emr_profile_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+
   service_role = aws_iam_role.iam_emr_service_role.arn
 }
 
