@@ -35,6 +35,7 @@ jobs:
         $COMMAND_IAC plan
         $COMMAND_IAC apply -auto-approve
     
+    - uses: actions/checkout@master
     - name: Upload file to bucket
       uses: zdurham/s3-upload-github-action@master
       with:
