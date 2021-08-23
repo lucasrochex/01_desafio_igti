@@ -155,7 +155,14 @@ resource "aws_subnet" "main" {
     name = "emr_test"
   }
 }
+resource "aws_vpc" "main" {
+  cidr_block           = "168.31.0.0/16"
+  enable_dns_hostnames = true
 
+  tags = {
+    name = "emr_test"
+  }
+}
 resource "aws_security_group" "allow_access" {
   name        = "allow_access"
   description = "Allow inbound traffic"
