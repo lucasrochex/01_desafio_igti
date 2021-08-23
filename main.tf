@@ -47,8 +47,8 @@ EOF
 
   ec2_attributes {
     subnet_id                         = aws_subnet.main.id
-    emr_managed_master_security_group = aws_security_group.sg.id
-    emr_managed_slave_security_group  = aws_security_group.sg.id
+    emr_managed_master_security_group = aws_security_group.allow_all.id
+    emr_managed_slave_security_group  = aws_security_group.allow_all.id
     instance_profile                  = aws_iam_instance_profile.emr_profile.arn
   }
 
@@ -213,6 +213,25 @@ resource "aws_iam_role" "iam_emr_profile_role" {
       "Effect": "Allow",
       "Principal": {
         "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+EOF
+}
+resource "aws_iam_role" "iam_emr_service_role" {
+  name = "iam_emr_service_role"
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "elasticmapreduce.amazonaws.com"
       },
       "Action": "sts:AssumeRole"
     }
