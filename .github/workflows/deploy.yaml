@@ -41,8 +41,8 @@ jobs:
         args: --acl public-read
       env:
       FILE: C:\Users\Lucas\Desktop\2021\microdados_educacao_basica_2020\Dados uteis\*.csv
-        AWS_REGION: 'us-east-2'
-        S3_BUCKET: 'base-bucket-name'
-        S3_KEY: 'raw/matricula-censo'
+        AWS_REGION: us-east-2
+        S3_BUCKET: base-bucket-name
+        S3_KEY: raw/matricula-censo
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
