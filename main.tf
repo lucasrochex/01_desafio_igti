@@ -129,7 +129,7 @@ resource "aws_security_group" "allow_all" {
 }
 
 resource "aws_vpc" "main" {
-  cidr_block           = "168.31.0.0/16"
+  cidr_block           = ["168.31.0.0/16"]
   enable_dns_hostnames = true
 
   tags = {
@@ -139,7 +139,7 @@ resource "aws_vpc" "main" {
 
 resource "aws_subnet" "main" {
   vpc_id     = aws_vpc.main.id
-  cidr_block = "168.31.0.0/20"
+  cidr_block = ["168.31.0.0/20"]
 
   tags = {
     name = "emr_test"
@@ -154,7 +154,7 @@ resource "aws_route_table" "r" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = ["0.0.0.0/0"]
     gateway_id = aws_internet_gateway.gw.id
   }
 }
