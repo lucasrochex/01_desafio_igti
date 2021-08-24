@@ -129,7 +129,7 @@ resource "aws_security_group" "allow_all" {
 }
 
 resource "aws_vpc" "main" {
-  cidr_block           = "168.31.0.0/16"
+  cidr_block           = ["168.31.0.0/16"]
   enable_dns_hostnames = true
 
   tags = {
